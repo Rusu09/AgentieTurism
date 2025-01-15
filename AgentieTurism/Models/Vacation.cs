@@ -32,5 +32,6 @@ namespace AgentieTurism.Models
 
         public int? LocationID { get; set; }
         public Location? Location { get; set; }
+        public ICollection<VacationTag>? VacationTags { get; set; }
     }
 }

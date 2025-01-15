@@ -11,7 +11,7 @@ using System.Security.Policy;
 
 namespace AgentieTurism.Pages.Vacations
 {
-    public class CreateModel : PageModel
+    public class CreateModel : VacationTagPageModel
     {
         private readonly AgentieTurism.Data.AgentieTurismContext _context;
 
@@ -23,6 +23,11 @@ namespace AgentieTurism.Pages.Vacations
         public IActionResult OnGet()
         {
             ViewData["LocationID"] = new SelectList(_context.Set<Location>(), "ID","FullLocation");
+
+            var vacation = new Vacation();
+            vacation.VacationTags = new List<VacationTag>();
+            PopulateAssignedTagData(_context, vacation);
+
             return Page();
         }
 
@@ -30,17 +35,26 @@ namespace AgentieTurism.Pages.Vacations
         public Vacation Vacation { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string[] selectedTags)
         {
-            if (!ModelState.IsValid)
+            var newVacation = new Vacation();
+            if (selectedTags != null)
             {
-                return Page();
+                newVacation.VacationTags = new List<VacationTag>();
+                foreach (var tag in selectedTags)
+                {
+                    var tagToAdd = new VacationTag
+                    {
+                        TagID = int.Parse(tag)
+                    };
+                    newVacation.VacationTags.Add(tagToAdd);
+                }
             }
-
+            Vacation.VacationTags = newVacation.VacationTags;
             _context.Vacation.Add(Vacation);
             await _context.SaveChangesAsync();
-
             return RedirectToPage("./Index");
         }
     }
+    
 }

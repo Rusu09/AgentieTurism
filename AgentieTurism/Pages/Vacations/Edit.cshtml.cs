@@ -11,7 +11,7 @@ using AgentieTurism.Models;
 
 namespace AgentieTurism.Pages.Vacations
 {
-    public class EditModel : PageModel
+    public class EditModel : VacationTagPageModel
     {
         private readonly AgentieTurism.Data.AgentieTurismContext _context;
 
@@ -30,11 +30,18 @@ namespace AgentieTurism.Pages.Vacations
                 return NotFound();
             }
 
-            var vacation =  await _context.Vacation.FirstOrDefaultAsync(m => m.ID == id);
+            var vacation =  await _context.Vacation
+                .Include(v => v.Location)
+                .Include(v => v.VacationTags).ThenInclude(v => v.Tag)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (vacation == null)
             {
                 return NotFound();
             }
+
+            PopulateAssignedTagData(_context, vacation);
+
             Vacation = vacation;
             ViewData["LocationID"] = new SelectList(_context.Set<Location>(), "ID", "FullLocation");
             return Page();
@@ -42,37 +49,36 @@ namespace AgentieTurism.Pages.Vacations
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id, string[] selectedTags)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Vacation).State = EntityState.Modified;
+            var vacationToUpdate = await _context.Vacation
+            .Include(i => i.Location)
+            .Include(i => i.VacationTags)
+            .ThenInclude(i => i.Tag)
+            .FirstOrDefaultAsync(s => s.ID == id);
 
-            try
+            if (vacationToUpdate == null)
             {
+                return NotFound();
+            }
+            if (await TryUpdateModelAsync<Vacation>(
+            vacationToUpdate,
+            "Vacation",
+            i => i.Title, i => i.Description, i => i.Price, i => i.AvailableFrom, i => i.AvailableTo, i => i.LocationID))
+            {
+                UpdateVacationTags(_context, selectedTags, vacationToUpdate);
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!VacationExists(Vacation.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
+            UpdateVacationTags(_context, selectedTags, vacationToUpdate);
+            PopulateAssignedTagData(_context, vacationToUpdate);
+            return Page();
         }
 
-        private bool VacationExists(int id)
-        {
-            return _context.Vacation.Any(e => e.ID == id);
-        }
     }
 }

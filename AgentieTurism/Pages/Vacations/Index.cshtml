@@ -2,7 +2,7 @@
 @model AgentieTurism.Pages.Vacations.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Vacations";
 }
 
 <h1>Index</h1>
@@ -34,12 +34,21 @@
             <th>
                 @Html.DisplayNameFor(model => model.Vacation[0].AvailableTo)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vacation[0].VacationTags)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Vacation) {
-        <tr>
+@foreach (var item in Model.VacationD.Vacations) {
+
+    string selectedRow = "";
+            if (item.ID == Model.VacationID)
+            {
+                selectedRow = "table-success";
+            }
+        <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
@@ -61,6 +70,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AvailableTo)
             </td>
+                <td>
+                    @{
+                        foreach (var tag in item.VacationTags)
+                        {
+                            @tag.Tag.ID @: @tag.Tag.TagName <br />
+                        }
+                    }
+                </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
