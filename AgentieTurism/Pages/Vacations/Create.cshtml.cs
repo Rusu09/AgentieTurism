@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using AgentieTurism.Data;
 using AgentieTurism.Models;
+using System.Security.Policy;
 
 namespace AgentieTurism.Pages.Vacations
 {
@@ -21,6 +22,7 @@ namespace AgentieTurism.Pages.Vacations
 
         public IActionResult OnGet()
         {
+            ViewData["LocationID"] = new SelectList(_context.Set<Location>(), "ID","FullLocation");
             return Page();
         }
 

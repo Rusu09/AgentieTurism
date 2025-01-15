@@ -23,7 +23,9 @@ namespace AgentieTurism.Pages.Vacations
 
         public async Task OnGetAsync()
         {
-            Vacation = await _context.Vacation.ToListAsync();
+            Vacation = await _context.Vacation
+                .Include(b=> b.Location)
+                .ToListAsync();
         }
     }
 }

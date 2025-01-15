@@ -36,6 +36,7 @@ namespace AgentieTurism.Pages.Vacations
                 return NotFound();
             }
             Vacation = vacation;
+            ViewData["LocationID"] = new SelectList(_context.Set<Location>(), "ID", "FullLocation");
             return Page();
         }
 
