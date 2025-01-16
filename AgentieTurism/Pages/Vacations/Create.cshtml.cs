@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using AgentieTurism.Data;
 using AgentieTurism.Models;
 using System.Security.Policy;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AgentieTurism.Pages.Vacations
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel : VacationTagPageModel
     {
         private readonly AgentieTurism.Data.AgentieTurismContext _context;

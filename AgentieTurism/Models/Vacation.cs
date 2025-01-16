@@ -7,9 +7,11 @@ namespace AgentieTurism.Models
     {
         public int ID { get; set; }
         [Display(Name = "Vacation")]
+        [StringLength(200, MinimumLength = 3, ErrorMessage = "Title must have at least 3 characters and at most 200!")]
         public string Title { get; set; }
         public string? Description { get; set; }
         [Column(TypeName = "decimal(10, 2)")]
+        [Range(1, 10000)]
         public decimal? Price { get; set; }
         [DataType(DataType.Date)]
         [Display(Name = "Departure")]

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AgentieTurism.Data;
 using AgentieTurism.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AgentieTurism.Pages.Vacations
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly AgentieTurism.Data.AgentieTurismContext _context;

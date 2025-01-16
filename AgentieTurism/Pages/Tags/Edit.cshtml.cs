@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AgentieTurism.Data;
 using AgentieTurism.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AgentieTurism.Pages.Tags
 {
+    [Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
         private readonly AgentieTurism.Data.AgentieTurismContext _context;

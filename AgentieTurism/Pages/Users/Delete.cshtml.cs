@@ -10,6 +10,7 @@ using AgentieTurism.Models;
 
 namespace AgentieTurism.Pages.Users
 {
+
     public class DeleteModel : PageModel
     {
         private readonly AgentieTurism.Data.AgentieTurismContext _context;

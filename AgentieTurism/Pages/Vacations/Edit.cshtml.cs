@@ -8,11 +8,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AgentieTurism.Data;
 using AgentieTurism.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AgentieTurism.Pages.Vacations
 {
+    [Authorize(Roles = "Admin")]
     public class EditModel : VacationTagPageModel
     {
+        
         private readonly AgentieTurism.Data.AgentieTurismContext _context;
 
         public EditModel(AgentieTurism.Data.AgentieTurismContext context)
@@ -32,7 +35,8 @@ namespace AgentieTurism.Pages.Vacations
 
             var vacation =  await _context.Vacation
                 .Include(v => v.Location)
-                .Include(v => v.VacationTags).ThenInclude(v => v.Tag)
+                .Include(v => v.VacationTags)
+                .ThenInclude(v => v.Tag)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (vacation == null)

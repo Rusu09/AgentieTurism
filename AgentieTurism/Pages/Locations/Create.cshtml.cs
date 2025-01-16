@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using AgentieTurism.Data;
 using AgentieTurism.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AgentieTurism.Pages.Locations
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly AgentieTurism.Data.AgentieTurismContext _context;
