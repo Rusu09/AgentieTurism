@@ -15,6 +15,7 @@ namespace AgentieTurism.Models
         [Range(1, 10)]
         public int Rating { get; set; }
         [DataType(DataType.Date)]
+        [Display(Name = "Review Date")]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

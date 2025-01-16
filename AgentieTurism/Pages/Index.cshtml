@@ -1,10 +1,52 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bine ați venit la Agenția de Turism!</h1>
+    <p class="lead">
+        Descoperă cele mai frumoase locații de vacanță alături de agenția noastră. 
+        Suntem dedicați să îți oferim cele mai bune experiențe, cu servicii profesionale, oferte incredibile și suport 24/7.
+        Începe astăzi călătoria ta de vis cu noi!
+    </p>
+</div>
+
+<hr class="my-4" />
+
+<div class="text-center my-5">
+    <h2>Noile Oferte</h2>
+    <a class="btn btn-custom-offers btn-lg mt-3" href="/Vacations/Index" role="button">
+        Apasă aici pentru a vedea noile oferte
+    </a>
+</div>
+
+<hr class="my-4" />
+
+<div class="text-center my-5">
+    <h2>Realizează o Rezervare</h2>
+    <p>Intrați în cont pentru a putea rezerva vacanța mult visată!</p>
+    <a class="btn btn-custom-register btn-lg mx-2" href="/Identity/Account/Register" role="button">Register</a>
+    <a class="btn btn-custom-login btn-lg mx-2" href="/Identity/Account/Login" role="button">Login</a>
+</div>
+
+<hr class="my-4" />
+
+<div class="text-center my-5">
+    <h2>Destinații de Vis</h2>
+    <div class="d-flex justify-content-center flex-wrap">
+        <div class="m-2">
+            <img src="~/resources/barcelona.jpg" class="img-fluid rounded" alt="Barcelona" style="max-width: 300px;" />
+            <p>Barcelona</p>
+        </div>
+        <div class="m-2">
+            <img src="~/resources/grecia.jpg" class="img-fluid rounded" alt="Grecia" style="max-width: 300px;" />
+            <p>Grecia</p>
+        </div>
+        <div class="m-2">
+            <img src="~/resources/munte.jpg" class="img-fluid rounded" alt="Munte" style="max-width: 300px;" />
+            <p>Munte</p>
+        </div>
+    </div>
 </div>

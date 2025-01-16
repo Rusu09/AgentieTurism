@@ -5,10 +5,10 @@
     ViewData["Title"] = "Vacations";
 }
 
-<h1>Index</h1>
+<h1>Vacanțe</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create" class="btn btn-custom-create">Create New</a>
 </p>
 
 <form asp-page="./Index" method="get">
@@ -16,8 +16,8 @@
         <p>
             Search by Vacation / Location:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index" class="btn btn-info">Back to full List</a>
+            <input type="submit" value="Search" class="btn btn-custom-create" /> |
+            <a asp-page="./Index" class="btn btn-custom-create">Back to full List</a>
         </p>
     </div>
 </form>
@@ -29,9 +29,6 @@
                 <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort" style="color: gray; text-decoration: none;">
                     @Html.DisplayNameFor(model => model.Vacation[0].Title)
                 </a>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vacation[0].Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Vacation[0].Location.FullLocation)
@@ -73,9 +70,6 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Location.FullLocation)
             </td>
             <td>
@@ -99,9 +93,9 @@
                     }
                 </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-page="./Edit" class="btn btn-custom-edit" asp-route-id="@item.ID">Edit</a> 
+                <a asp-page="./Details" class="btn btn-custom-details" asp-route-id="@item.ID">Details</a> 
+                    <a asp-page="./Delete" class="btn btn-custom-delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
 }

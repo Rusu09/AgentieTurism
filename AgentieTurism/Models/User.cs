@@ -8,9 +8,11 @@ namespace AgentieTurism.Models
         public int ID { get; set; }
         [RegularExpression(@"^[A-Z]+[a-z\s]*$", ErrorMessage = "First name must start with a capital letter!")]
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Last name must have at least 3 characters and at most 30!")]
+        [Display(Name = "First Name")]
         public string? FirstName { get; set; }
         [RegularExpression(@"^[A-Z]+[a-z\s]*$", ErrorMessage = "Last name must start with a capital letter!")]
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Last name must have at least 3 characters and at most 30!")]
+        [Display(Name = "Last Name")]
         public string? LastName { get; set; }
         public string Email { get; set; }
         [RegularExpression(@"^\(?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Phone number must be in one of the following formats: '0722-123-123' / '0722.123.123' / '0722 123 123'")]

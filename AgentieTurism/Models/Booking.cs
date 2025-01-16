@@ -12,8 +12,10 @@ namespace AgentieTurism.Models
         public User? User { get; set; }
 
         [DataType(DataType.Date)]
+        [Display(Name = "Booking Date")]
         public DateTime BookingDate { get; set; } = DateTime.Now;
         [Range(1, 12)]
+        [Display(Name = "Number Of People")]
         public int NrOfPeople { get; set; }
         
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Status must have at least 3 characters and at most 30!")]

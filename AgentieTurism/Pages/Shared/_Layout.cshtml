@@ -10,9 +10,12 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #85C7DE; border-bottom: 1px solid #ddd; color: darkgrey">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Agenția de Turism</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <img src="~/resources/vac.png" alt="Logo" style="height: 40px; margin-right: 10px;" />
+                    Agenția de Turism
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -38,7 +41,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Reviews/Index">Reviews</a>
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
+                    <button class="btn" style="background-color: #9fd2e5;"><partial name="_LoginPartial" /></button>
                 </div>
             </div>
         </nav>
@@ -50,7 +53,7 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container" align="center">
             &copy; 2025 - Agenția de Turism - Rus David-Sorin - Pusok Alex-Dănuț - <a asp-area="" asp-page="/Privacy" style="color: grey; text-decoration: none;">Privacy</a>
         </div>
     </footer>

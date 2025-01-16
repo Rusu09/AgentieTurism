@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -20,3 +20,125 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Header Styles */
+header .navbar {
+  background-color: #85C7DE;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #85C7DE;
+}
+
+/* Custom button for offers */
+.btn-custom-offers {
+    background-color: #6FBAD2; /* A softer blue tone */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+    .btn-custom-offers:hover {
+        background-color: #539BB0; /* Slightly darker blue on hover */
+        color: white;
+    }
+
+/* Custom button for register */
+.btn-custom-register {
+    background-color: #F0A500; /* A warm golden-orange */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+    .btn-custom-register:hover {
+        background-color: #D68A00; /* Darker orange on hover */
+        color: white;
+    }
+
+/* Custom button for login */
+.btn-custom-login {
+    background-color: #85C7DE; /* Matches header/footer background */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+    .btn-custom-login:hover {
+        background-color: #6FBAD2; /* Slightly darker shade of the same blue */
+        color: white;
+    }
+
+.btn-custom-create {
+    background-color: #85C7DE; /* Albastru deschis */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+    .btn-custom-create:hover {
+        background-color: #6FBAD2; /* Albastru mai închis */
+        color: white;
+    }
+
+/* Buton pentru Edit */
+.btn-custom-edit {
+    background-color: #F0A500; /* Portocaliu cald */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+    .btn-custom-edit:hover {
+        background-color: #D68A00; /* Portocaliu mai închis */
+        color: white;
+    }
+
+/* Buton pentru Details */
+.btn-custom-details {
+    background-color: #6FBAD2; /* Albastru */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+    .btn-custom-details:hover {
+        background-color: #539BB0; /* Albastru mai închis */
+        color: white;
+    }
+
+/* Buton pentru Delete */
+.btn-custom-delete {
+    background-color: #FF6B6B; /* Roșu pentru Delete */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+    .btn-custom-delete:hover {
+        background-color: #E04848; /* Roșu mai închis */
+        color: white;
+    }
