@@ -17,5 +17,8 @@ namespace AgentieTurism.Data
         public DbSet<AgentieTurism.Models.Vacation> Vacation { get; set; } = default!;
         public DbSet<AgentieTurism.Models.Location> Location { get; set; } = default!;
         public DbSet<AgentieTurism.Models.Tag> Tag { get; set; } = default!;
+        public DbSet<AgentieTurism.Models.User> User { get; set; } = default!;
+        public DbSet<AgentieTurism.Models.Booking> Booking { get; set; } = default!;
+        public DbSet<AgentieTurism.Models.Review> Review { get; set; } = default!;
     }
 }

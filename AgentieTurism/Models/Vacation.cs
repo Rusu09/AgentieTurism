@@ -34,5 +34,7 @@ namespace AgentieTurism.Models
         public Location? Location { get; set; }
         [Display(Name = "Tags")]
         public ICollection<VacationTag>? VacationTags { get; set; }
+        public ICollection<Booking> Bookings { get; set; }
+        public ICollection<Review> Reviews { get; set; }
     }
 }

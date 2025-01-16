@@ -1,0 +1,66 @@
+﻿@page
+@model AgentieTurism.Pages.Bookings.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Vacation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Vacation.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].BookingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].NrOfPeople)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Booking) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vacation.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vacation.Location.FullLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NrOfPeople)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
