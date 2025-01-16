@@ -24,6 +24,12 @@
             @Html.DisplayFor(model => model.Vacation.Description)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vacation.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vacation.Location.FullLocation)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Vacation.Price)
         </dt>
         <dd class="col-sm-10">
@@ -46,6 +52,17 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Vacation.AvailableTo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vacation.VacationTags)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                foreach (var tag in Model.Vacation.VacationTags)
+                {
+                    @: @tag.Tag.TagName <br />
+                }
+            }
         </dd>
     </dl>
 </div>

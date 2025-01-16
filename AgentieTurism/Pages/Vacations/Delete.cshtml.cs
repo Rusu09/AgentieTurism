@@ -29,7 +29,11 @@ namespace AgentieTurism.Pages.Vacations
                 return NotFound();
             }
 
-            var vacation = await _context.Vacation.FirstOrDefaultAsync(m => m.ID == id);
+            var vacation = await _context.Vacation
+                .Include(v => v.Location)
+                .Include(v => v.VacationTags)
+                .ThenInclude(v => v.Tag)
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (vacation == null)
             {
