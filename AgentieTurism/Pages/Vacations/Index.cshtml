@@ -10,11 +10,25 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search by Vacation / Location:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index" class="btn btn-info">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Vacation[0].Title)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort" style="color: gray; text-decoration: none;">
+                    @Html.DisplayNameFor(model => model.Vacation[0].Title)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Vacation[0].Description)
@@ -23,16 +37,22 @@
                 @Html.DisplayNameFor(model => model.Vacation[0].Location.FullLocation)
             </th>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.PriceSort" style="color: gray; text-decoration: none;">
                 @Html.DisplayNameFor(model => model.Vacation[0].Price)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Vacation[0].DurationDays)
             </th>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DepartureSort" style="color: gray; text-decoration: none;">
                 @Html.DisplayNameFor(model => model.Vacation[0].AvailableFrom)
+                </a>
             </th>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ReturnSort" style="color: gray; text-decoration: none;">
                 @Html.DisplayNameFor(model => model.Vacation[0].AvailableTo)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Vacation[0].VacationTags)
