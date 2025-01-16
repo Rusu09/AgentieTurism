@@ -36,8 +36,18 @@ namespace AgentieTurism.Pages.Bookings
                 return NotFound();
             }
             Booking = booking;
-           ViewData["UserID"] = new SelectList(_context.User, "ID", "ID");
-           ViewData["VacationID"] = new SelectList(_context.Vacation, "ID", "ID");
+
+
+            var vacationList = _context.Vacation
+                             .Include(v => v.Location)
+                             .Select(x => new
+                             {
+                                 x.ID,
+                                 vacationInfo = x.Title + " - " + x.Location.FullLocation + " - " + x.Price + " € - " + x.AvailableFrom + "-" + x.AvailableTo
+                             });
+
+            ViewData["UserID"] = new SelectList(_context.User, "ID", "FullName");
+            ViewData["VacationID"] = new SelectList(vacationList, "ID", "vacationInfo");
             return Page();
         }
 

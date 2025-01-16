@@ -29,7 +29,11 @@ namespace AgentieTurism.Pages.Reviews
                 return NotFound();
             }
 
-            var review = await _context.Review.FirstOrDefaultAsync(m => m.ID == id);
+            var review = await _context.Review
+                .Include(b => b.User)
+                .Include(b => b.Vacation)
+                .ThenInclude(b => b.Location)
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (review == null)
             {

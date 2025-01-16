@@ -28,7 +28,11 @@ namespace AgentieTurism.Pages.Bookings
                 return NotFound();
             }
 
-            var booking = await _context.Booking.FirstOrDefaultAsync(m => m.ID == id);
+            var booking = await _context.Booking
+                .Include(b => b.User)
+                .Include(b => b.Vacation)
+                .ThenInclude(b => b.Location)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (booking == null)
             {
                 return NotFound();
